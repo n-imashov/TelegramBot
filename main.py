@@ -422,6 +422,8 @@ def financial_status(message):
             total_income = 0
         if total_expenses is None:
             total_expenses = 0
+        if total_income == 0 and total_expenses == 0:
+            return None
 
         if total_income >= total_expenses:
             income_expense_ratio = (total_income - total_expenses) / total_income * 100
