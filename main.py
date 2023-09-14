@@ -1,9 +1,10 @@
 import telebot, sqlite3, requests, random
+from decouple import config
 from telebot import types
 from datetime import datetime, timedelta
 from texts import financial_advice
 
-TOKEN = '5849575828:AAGdAbpIoPGmkM-TWMAcQ8guq8nvcv0PoHM'
+TOKEN = config("TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
 # Главное меню
@@ -59,7 +60,7 @@ conn.commit()
 conn.close()
 
 
-# Обработчик кнопки "Доход"
+# Обработчик кнопки "добавить доход"
 @bot.message_handler(func=lambda message: message.text == "Добавить доход")
 def add_income(message):
     msg = bot.send_message(message.chat.id, "Введите сумму дохода:")
